@@ -3,6 +3,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import HabitsPage from './pages/HabitsPage.jsx'
+import EventApp from "./components/eventPlanner/eventPlanner"
 
 function App() {
 
