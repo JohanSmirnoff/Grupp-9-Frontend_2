@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+.header-div {
+  font-family: "Honk", sans-serif, Helvetica, Arial;
+}
+
 .nav-div {
   justify-content: center;
 }

@@ -1,7 +1,7 @@
 function HomePage () {
     return(
         <>
-            <header>
+            <header className="header-div">
                 <nav>
 
                 </nav>
