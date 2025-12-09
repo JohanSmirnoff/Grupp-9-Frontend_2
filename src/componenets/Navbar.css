@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+body {
+  font-family: 'Honk', sans-serif;
+}
+.navbar h1{
+ 
+}
+
+.navbar {
+align-items: center;
+  background-color: lightgray;
+  padding: 20px;
+ 
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.navbar li a{
+    
+  text-decoration: none;
+}
