@@ -2,22 +2,25 @@ import { useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import HomePage from './pages/HomePage'
+import HabitsPage from './pages/HabitsPage.jsx'
 
 function App() {
 
   return (
     <>
       <Router>
-        <Link to="/"> </Link>
+        <nav style={{ display: "flex", gap: "10px", padding: "10px" }}>
+          <Link to="/">Hem</Link>
+          <Link to="/habits">Habits</Link>
+        </nav>
+
         <Routes>
-          <Route path="/"  element={<HomePage />} />
-          <Route></Route>
-          <Route></Route>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/habits" element={<HabitsPage />} />
         </Routes>
       </Router>
-
     </>
   )
 }
 
-export default App
+export default App 
