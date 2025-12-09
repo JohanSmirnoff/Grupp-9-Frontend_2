@@ -11,7 +11,7 @@ const Navbar = () => {
           Home
         </li>
         <li>
-      
+   
           Todos & Activities
         </li>
         <li>
