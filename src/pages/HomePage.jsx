@@ -12,14 +12,13 @@ function HomePage () {
 
             </header>
             <main>
-                <div>
-                {/* todo */}
-                </div>
-                <div>
-                    {/* habit */}
-                </div> 
-                <div>
-                    {/* event  */}
+                <div className="test-div">
+                    <p>test 1</p>
+                    <p>test 2</p>
+                    <p>test 3</p>
+                    {/* harbits */}
+                    {/* todos */}
+                    {/* events */}
                 </div>
             </main>
         </>
