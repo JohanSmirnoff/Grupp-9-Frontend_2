@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Router>
-        <nav style={{ display: "flex", gap: "10px", padding: "10px" }}>
+        <nav className="nav-div" style={{ display: "flex", gap: "10px", padding: "10px" }}>
           <Link to="/">Hem</Link>
           <Link to="/habits">Habits</Link>
           <Link to="/todos">Todos</Link>
