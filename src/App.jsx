@@ -12,11 +12,15 @@ function App() {
         <nav style={{ display: "flex", gap: "10px", padding: "10px" }}>
           <Link to="/">Hem</Link>
           <Link to="/habits">Habits</Link>
+          <Link to="/todos">Todos</Link>
+          <Link to="/events">Events</Link>
         </nav>
 
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/habits" element={<HabitsPage />} />
+          {/* <Route path="/todos" element={<HabitsPage />} />
+          <Route path="/events" element={<HabitsPage />} /> */}
         </Routes>
       </Router>
     </>
