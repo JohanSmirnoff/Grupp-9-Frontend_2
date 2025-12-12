@@ -3,13 +3,12 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import HabitsPage from './pages/HabitsPage.jsx'
-import EventApp from "./components/eventPlanner/eventPlanner"
+import EventApp from "./pages/EventsPage"
 
 function App() {
 
   return (
     <>
-      <EventApp />
       <Router>
         <nav className="nav-div" style={{ display: "flex", gap: "10px", padding: "10px" }}>
           <Link to="/">Hem</Link>
@@ -21,8 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/habits" element={<HabitsPage />} />
-          {/* <Route path="/todos" element={<HabitsPage />} />
-          <Route path="/events" element={<HabitsPage />} /> */}
+          {/* <Route path="/todos" element={<HabitsPage />} /> */}
+          <Route path="/events" element={<EventApp />} />
         </Routes>
       </Router>
     </>

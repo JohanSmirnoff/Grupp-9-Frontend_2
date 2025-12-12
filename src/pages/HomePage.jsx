@@ -16,7 +16,7 @@ function HomePage () {
                     <p>test 1</p>
                     <p>test 2</p>
                     <p>test 3</p>
-                    {/* harbits */}
+                    {/* habits */}
                     {/* todos */}
                     {/* events */}
                 </div>
