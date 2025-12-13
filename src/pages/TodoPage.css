@@ -1,0 +1,255 @@
+/* ====== Layout ====== */
+.todoContainer {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ====== Add Task Section ====== */
+.addTask {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.addTask form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.addTask input,
+.addTask select {
+  flex: 1 1 45%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.addTask button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.addTask button:hover {
+  background: #43a047;
+}
+
+.addTask p {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* ====== Tasks List ====== */
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tasksContainer h2 {
+  text-align: center;
+  color: #777;
+}
+
+/* ====== Task Card ====== */
+.taskCard {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 6px solid #2196f3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.taskCardDone {
+  background: #e8f5e9;
+  border-left-color: #4caf50;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.taskCard h3 {
+  margin: 0 0 10px;
+}
+
+.taskCard p {
+  margin: 5px 0;
+  color: #444;
+}
+
+/* ====== Buttons inside task card ====== */
+.taskCard button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.taskCard button:first-of-type {
+  background: #e53935;
+  color: white;
+}
+
+.taskCard button:first-of-type:hover {
+  background: #c62828;
+}
+
+.taskCard button:last-of-type {
+  background: #2196f3;
+  color: white;
+}
+
+.taskCard button:last-of-type:hover {
+  background: #1976d2;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 600px) {
+  .addTask input,
+  .addTask select {
+    flex: 1 1 100%;
+  }
+}/* ====== Layout ====== */
+.todoContainer {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ====== Add Task Section ====== */
+.addTask {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.addTask form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.addTask input,
+.addTask select {
+  flex: 1 1 45%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.addTask button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.addTask button:hover {
+  background: #43a047;
+}
+
+.addTask p {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* ====== Tasks List ====== */
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tasksContainer h2 {
+  text-align: center;
+  color: #777;
+}
+
+/* ====== Task Card ====== */
+.taskCard {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 6px solid #2196f3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.taskCardDone {
+  background: #e8f5e9;
+  border-left-color: #4caf50;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.taskCard h3 {
+  margin: 0 0 10px;
+}
+
+.taskCard p {
+  margin: 5px 0;
+  color: #444;
+}
+
+/* ====== Buttons inside task card ====== */
+.taskCard button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.taskCard button:first-of-type {
+  background: #e53935;
+  color: white;
+}
+
+.taskCard button:first-of-type:hover {
+  background: #c62828;
+}
+
+.taskCard button:last-of-type {
+  background: #2196f3;
+  color: white;
+}
+
+.taskCard button:last-of-type:hover {
+  background: #1976d2;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 600px) {
+  .addTask input,
+  .addTask select {
+    flex: 1 1 100%;
+  }
+}
