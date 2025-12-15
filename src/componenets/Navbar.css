@@ -1,0 +1,62 @@
+/* Importera fonten */
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+
+/* ====== Navbar Container ====== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e1e;
+  padding: 15px 30px;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* ====== Titel med Honk-font ====== */
+.navbar h1 {
+  font-family: "Honk", system-ui;
+  font-size: 40px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+/* ====== Navigation List ====== */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+/* ====== Links ====== */
+.navbar ul li a,
+.navbar ul li {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+/* Hover-effekt */
+.navbar ul li a:hover,
+.navbar ul li:hover {
+  color: #4caf50;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/* ====== Responsiv ====== */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
