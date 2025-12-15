@@ -7,21 +7,17 @@ const Navbar = () => {
       <h1>Grupp 9 </h1>
       <ul>
         <li>
-         <Link to={"/home"}> Home </Link>
-     
+         <Link to={"/"}> Home </Link>
         </li>
         <li>
-         <Link to={"/ToDo"}>Todos & Activities </Link>
-   
-          
+         <Link to={"/habits"}>Habits </Link>
         </li>
         <li>
-       
+          <Link to={"/ToDo"}>Todos & Activities </Link>
           Habits
         </li>
         <li>
-   
-          Event planner
+          <Link to={"/events"}>Event planner</Link>
         </li>
       </ul>
     </div>
