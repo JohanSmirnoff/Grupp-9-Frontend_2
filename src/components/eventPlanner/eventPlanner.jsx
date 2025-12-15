@@ -96,7 +96,7 @@ const EventPlanner = () => {
     .sort((eventA, eventB) => {
         const eventOrder = { upcoming: 0, ongoing: 1, past: 2 }
         if (eventOrder[eventA.status] !== eventOrder[eventB.status]) {
-            return eventOrder[eventA] - eventOrder[eventB.status]
+            return eventOrder[eventA.status] - eventOrder[eventB.status]
         }
         return new Date(eventA.status) - new Date(eventB.status)
     })
