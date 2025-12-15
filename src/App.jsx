@@ -1,10 +1,10 @@
 import './App.css'
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import HabitsPage from './pages/HabitsPage.jsx'
 
 import TodoPage from "./pages/TodoPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./componenets/Navbar";
 
@@ -20,8 +20,8 @@ function App() {
           <Link to="/events">Events</Link>
         </nav>
 
+        <Navbar/>
         <Routes>
-          <Navbar/>
           <Route path="/" element={<HomePage />} />
           <Route path="/habits" element={<HabitsPage />} />
           <Route path="/ToDo" element={<TodoPage />} />
