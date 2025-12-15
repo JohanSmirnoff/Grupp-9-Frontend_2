@@ -24,3 +24,8 @@
   border-radius: 2rem;
   padding: 2rem;
 }
+
+.form-div, .event-div {
+  display: flex;
+  flex-direction: column;
+}

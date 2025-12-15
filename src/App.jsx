@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import HabitsPage from './pages/HabitsPage.jsx'
+import EventPage from "./pages/EventsPage"
 
 import TodoPage from "./pages/TodoPage";
 // import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -25,7 +26,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/habits" element={<HabitsPage />} />
           <Route path="/ToDo" element={<TodoPage />} />
-          {/* <Route path="/events" element={<HabitsPage />} /> */}
+          <Route path="/events" element={<EventPage />} />
         </Routes>
       </Router>
     </>
