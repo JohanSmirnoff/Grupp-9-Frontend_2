@@ -5,16 +5,16 @@ const EventPlanner = () => {
     const [events, setEvents] = useState ([
         {
             id: crypto.randomUUID(),
-            start: 123,
-            end: 456,
+            start: "1970-01-01 13:00",
+            end: "1970-01-01 13:00",
             title: "Title 1",
             description: "Konsert jaaow",
             // owner: currentUser
         },
         {
             id: crypto.randomUUID(),
-            start: 2626,
-            end: 2727,
+            start: "1970-01-01 13:00",
+            end: "1970-01-01 13:00",
             title: "Title 2",
             description: "Foodfight",
             // owner: currentUser
@@ -103,9 +103,9 @@ const EventPlanner = () => {
     })
 
     return(
-        <div className="event-div">
+        <div className="main-div">
             <div className="form-div">
-                <form onSubmit={userSubmit}>
+                <form className="form-container" onSubmit={userSubmit}>
                     <div className="submit-1">
                         <div className="start-div">
                             <label htmlFor="eventStart">Start-tid: </label>
@@ -138,13 +138,16 @@ const EventPlanner = () => {
             </div>
 
             <div className="event-div">
-                <label htmlFor="sort">Filtrera event nedan:</label>
-                <select name="sort" id="sort" value={eventFilter} onChange={(e) => setEventFilter(e.target.value)}>
-                    <option value="all">Alla event</option>
-                    <option value="upcoming">Kommande</option>
-                    <option value="ongoing">Pågående</option>
-                    <option value="past">Tidigare</option>
-                </select>
+                <div className="filter-div">
+                    <label htmlFor="sort">Filtrera event nedan till: </label>
+                    <select name="sort" id="sort" value={eventFilter} onChange={(e) => setEventFilter(e.target.value)}>
+                        <option value="all">Alla event</option>
+                        <option value="upcoming">Kommande</option>
+                        <option value="ongoing">Pågående</option>
+                        <option value="past">Tidigare</option>
+                    </select>
+                </div>
+
                 <ul className="event-list">
                     {sortEvent.map(event => {
                         return(
@@ -154,7 +157,7 @@ const EventPlanner = () => {
                                     <span>Event starting: {new Date(event.start).toLocaleString()}<br />Event ending: {new Date(event.end).toLocaleString()}</span>
                                     <p>{event.description}</p>
                                 </div>
-                                <div>
+                                <div className="buttons-in-event">
                                     <button type="button" className="edit-button" onClick={() => updateEvent(event)}>Redigera</button>
                                     <button type="button" className="delete-button" onClick={() => removeEvent(event.id)}>Ta bort</button>
                                 </div>
