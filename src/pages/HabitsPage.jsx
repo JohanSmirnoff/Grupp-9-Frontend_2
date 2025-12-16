@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./HabitsPage.css"
 
 export default function HabitsPage() {
   const [habits, setHabits] = useState([]);
@@ -81,38 +82,38 @@ export default function HabitsPage() {
   }
 
   return (
-    <div className="habits-div" style={{ width: "340px", margin: "20px auto", fontFamily: "sans-serif" }}>
+    <div className="habits-div">
       <h2>Habits</h2>
 
-      <div style={{ marginBottom: "10px" }}>
+      <div className="habit-input-row">
         <input
           value={newHabit}
           onChange={(e) => setNewHabit(e.target.value)}
           placeholder="Titel på rutin..."
-          style={{ width: "200px", padding: "5px" }}
+          className="habit-input"
         />
 
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
-          style={{ marginLeft: "5px", padding: "5px" }}
+          className="habit-select"
         >
           <option value="låg">Låg</option>
           <option value="mellan">Mellan</option>
           <option value="hög">Hög</option>
         </select>
 
-        <button onClick={addHabit} style={{ marginLeft: "5px" }}>
+        <button onClick={addHabit} className="habit-button">
           Lägg till
         </button>
       </div>
 
-      <div style={{ marginBottom: "10px" }}>
+      <div className="habit-filter-row">
         <strong>Filter:</strong>
         <select
           value={filterPriority}
           onChange={(e) => setFilterPriority(e.target.value)}
-          style={{ marginLeft: "5px" }}
+          className="habit-select"
         >
           <option value="alla">Alla</option>
           <option value="låg">Låg</option>
@@ -120,11 +121,11 @@ export default function HabitsPage() {
           <option value="hög">Hög</option>
         </select>
 
-        <strong style={{ marginLeft: "10px" }}>Sortera:</strong>
+        <strong className="strong-sortera">Sortera:</strong>
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          style={{ marginLeft: "5px" }}
+          className="habit-select"
         >
           <option value="none">Ingen</option>
           <option value="count-asc">Reps ↑</option>
@@ -134,41 +135,36 @@ export default function HabitsPage() {
         </select>
       </div>
 
-      <ul className="habits-list" style={{ listStyle: "none", padding: 0 }}>
+      <ul className="habits-list">
         {filteredHabits.map(habit => (
           <li
             key={habit.id}
-            style={{
-              marginBottom: "8px",
-              padding: "10px",
-              background: "#f1f1f1",
-              borderRadius: "5px"
-            }}
+            className="habit-item"
           >
             <strong>{habit.title}</strong>
             <div>Repetitioner: {habit.count}</div>
             <div>Prioritet: <strong>{habit.priority}</strong></div>
 
-            <div style={{ marginTop: "5px" }}>
+            <div className="habit-actions">
               <button onClick={() => incrementHabit(habit.id)}>+1</button>
 
               <button
                 onClick={() => decrementHabit(habit.id)}
-                style={{ marginLeft: "5px" }}
+                className="habit-button"
               >
                 -1
               </button>
 
               <button
                 onClick={() => resetHabit(habit.id)}
-                style={{ marginLeft: "5px", background: "#ddd" }}
+                className="habit-button habit-reset"
               >
                 Nollställ
               </button>
 
               <button
                 onClick={() => removeHabit(habit.id)}
-                style={{ marginLeft: "5px", background: "red", color: "white" }}
+                className="habit-button habit-remove"
               >
                 Ta bort
               </button>
