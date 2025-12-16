@@ -5,14 +5,13 @@ import HabitsPage from './pages/HabitsPage.jsx'
 import TodoPage from "./pages/TodoPage";
 import EventPage from "./pages/EventsPage"
 import Navbar from "./components/NavBar/Navbar.jsx";
+import Footer from './components/Footer/footer.jsx';
 
 function App() {
   return (
     <>
       <Router>
-        <nav className="nav-div" style={{ display: "flex", gap: "10px", padding: "10px" }}>
-          <Navbar/>
-        </nav>
+        <Navbar/>
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,6 +19,8 @@ function App() {
           <Route path="/ToDo" element={<TodoPage />} />
           <Route path="/events" element={<EventPage />} />
         </Routes>
+
+        <Footer />
       </Router>
     </>
 

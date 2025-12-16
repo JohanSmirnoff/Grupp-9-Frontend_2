@@ -1,0 +1,115 @@
+/* .test-div {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  border-radius: 2rem;
+  padding: 2rem;
+} */
+
+.event-div {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*    FIXA HÄR */
+.form-div, .event-div {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.event-div button {
+    margin-top: 15px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.form-div {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.form-div form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.form-div button {
+    margin-top: 15px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.add-button {
+    background: #4caf50;
+}
+
+.add-button:hover {
+    background: #43a047;
+}
+
+.cancel-button {
+    background: #949494;
+}
+
+.cancel-button:hover {
+    background: #6d6d6d;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  gap: 20px;
+}
+
+.list-item {
+    background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 6px solid #2196f3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.edit-button {
+    background: #2196f3;
+}
+
+.edit-button:hover {
+    background: #1976d2;
+}
+
+.delete-button {
+    background: #e53935;
+}
+
+.delete-button:hover {
+    background: #c62828;
+}
+
+/*          sdfsfdsfds                */
+

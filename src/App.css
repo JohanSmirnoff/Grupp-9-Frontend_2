@@ -2,30 +2,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 90vh;
+  align-items: center;
+  /* height: 90vh;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem; */
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-.header-div {
-  font-family: "Honk", sans-serif, Helvetica, Arial;
+.home-h1, .home-h3 {
+  font-family: "Honk", sans-serif;
 }
 
-.nav-div {
-  justify-content: center;
+.habits-div {
+  border: 0px solid;
+  border-radius: 1rem;
+  background: #1e1e1e;
+  color: white;
 }
 
-.test-div {
-  display: flex;
-  justify-content: space-around;
-  border: 1px solid black;
-  border-radius: 2rem;
-  padding: 2rem;
-}
+/* .habits-list {
 
-.form-div, .event-div {
-  display: flex;
-  flex-direction: column;
-}
+} */

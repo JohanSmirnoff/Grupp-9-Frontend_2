@@ -81,7 +81,7 @@ export default function HabitsPage() {
   }
 
   return (
-    <div style={{ width: "340px", margin: "20px auto", fontFamily: "sans-serif" }}>
+    <div className="habits-div" style={{ width: "340px", margin: "20px auto", fontFamily: "sans-serif" }}>
       <h2>Habits</h2>
 
       <div style={{ marginBottom: "10px" }}>
@@ -134,7 +134,7 @@ export default function HabitsPage() {
         </select>
       </div>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul className="habits-list" style={{ listStyle: "none", padding: 0 }}>
         {filteredHabits.map(habit => (
           <li
             key={habit.id}

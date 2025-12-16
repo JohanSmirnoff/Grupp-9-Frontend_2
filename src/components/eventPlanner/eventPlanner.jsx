@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./eventPlanner.css"
 
 const EventPlanner = () => {
     const [events, setEvents] = useState ([
@@ -102,33 +103,36 @@ const EventPlanner = () => {
     })
 
     return(
-        <div>
+        <div className="event-div">
             <div className="form-div">
                 <form onSubmit={userSubmit}>
+                    <div className="submit-1">
+                        <div className="start-div">
+                            <label htmlFor="eventStart">Start-tid: </label>
+                            <input type="datetime-local" id="eventStart" value={start} onChange={(e) => setStart(e.target.value)} required/>
+                        </div>
 
-                    <div className="title-div">
-                        <label htmlFor="eventTitle">Titel: </label>
-                        <input type="text" name="eventTitle" id="eventTitle" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+                        <div className="end-div">
+                            <label htmlFor="eventEnd">Slut-tid: </label>
+                            <input type="datetime-local" id="eventEnd" value={end} onChange={(e) => setEnd(e.target.value)} required/>
+                        </div>
+
+                        <div className="title-div">
+                            <label htmlFor="eventTitle">Titel: </label> 
+                            <input type="text" name="eventTitle" id="eventTitle" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+                        </div>
                     </div>
 
-                    <div className="start-div">
-                        <label htmlFor="eventStart">Start-tid: </label>
-                        <input type="datetime-local" id="eventStart" value={start} onChange={(e) => setStart(e.target.value)} required/>
-                    </div>
+                    <div className="submit-2">
+                        <div className="description-div">
+                            <label htmlFor="eventDesc"></label>
+                            <textarea name="eventDesc" id="eventDesc" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Beskriv kortfattat eventet" rows={7} cols={40} required></textarea>
+                        </div>
 
-                    <div className="end-div">
-                        <label htmlFor="eventEnd">Slut-tid: </label>
-                        <input type="datetime-local" id="eventEnd" value={end} onChange={(e) => setEnd(e.target.value)} required/>
-                    </div>
-
-                    <div className="description-div">
-                        <label htmlFor="eventDesc">Kort beskrivning av eventet: </label>
-                        <textarea name="eventDesc" id="eventDesc" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Beskriv kortfattat eventet" rows={7} cols={40} required></textarea>
-                    </div>
-
-                    <div className="button-div">
-                        <button type="submit">{selectedToEdit === null ? "Lägg till event" : "Spara ändringar"}</button>
-                        {selectedToEdit !== null && (<button type="button" onClick={cancelEdit}>Avbryt redigering</button>)}
+                        <div className="button-div">
+                            <button type="submit" className="add-button">{selectedToEdit === null ? "Lägg till event" : "Spara ändringar"}</button>
+                            {selectedToEdit !== null && (<button type="button" className="cancel-button" onClick={cancelEdit}>Avbryt redigering</button>)}
+                        </div>
                     </div>
                 </form>
             </div>
@@ -141,18 +145,18 @@ const EventPlanner = () => {
                     <option value="ongoing">Pågående</option>
                     <option value="past">Tidigare</option>
                 </select>
-                <ul>
+                <ul className="event-list">
                     {sortEvent.map(event => {
                         return(
-                            <li key={event.id}>
+                            <li key={event.id} className="list-item">
                                 <div>
                                     <h3>{event.title}</h3>
                                     <span>Event starting: {new Date(event.start).toLocaleString()}<br />Event ending: {new Date(event.end).toLocaleString()}</span>
                                     <p>{event.description}</p>
                                 </div>
                                 <div>
-                                    <button type="button" onClick={() => updateEvent(event)}>Redigera</button>
-                                    <button type="button" onClick={() => removeEvent(event.id)}>Ta bort</button>
+                                    <button type="button" className="edit-button" onClick={() => updateEvent(event)}>Redigera</button>
+                                    <button type="button" className="delete-button" onClick={() => removeEvent(event.id)}>Ta bort</button>
                                 </div>
                             </li>
                             )

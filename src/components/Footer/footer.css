@@ -1,0 +1,14 @@
+.footer-div {
+    display: flex;
+    flex-direction: column;
+    align-items: space;
+    background: #1e1e1e;
+    color: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    padding: 0.7rem 0;
+    width: 100%;
+}
+
+.footer-p {
+    margin: 0;
+}
