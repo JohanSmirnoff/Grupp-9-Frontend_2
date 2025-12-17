@@ -102,10 +102,11 @@ export default function HabitsPage() {
           <option value="mellan">Mellan</option>
           <option value="hög">Hög</option>
         </select>
-
-        <button onClick={addHabit} className="habit-button">
-          Lägg till
-        </button>
+        <div className="add-button-div">
+          <button onClick={addHabit} className="habit-button">
+            Lägg till
+          </button>
+        </div>
       </div>
 
       <div className="habit-filter-row">
@@ -146,11 +147,15 @@ export default function HabitsPage() {
             <div>Prioritet: <strong>{habit.priority}</strong></div>
 
             <div className="habit-actions">
-              <button onClick={() => incrementHabit(habit.id)}>+1</button>
+              <button onClick={() => incrementHabit(habit.id)}
+              className="habit-button inc-button"
+              >
+                +1
+              </button>
 
               <button
                 onClick={() => decrementHabit(habit.id)}
-                className="habit-button"
+                className="habit-button dec-button"
               >
                 -1
               </button>

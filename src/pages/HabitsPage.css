@@ -1,6 +1,6 @@
-      /* ORIGINAL CSS     */
+/*    ORIGINAL CSS     */
 
-.habits-div {
+/* .habits-div {
   width: 340px;
   margin: 20px auto;
   font-family: sans-serif;
@@ -51,17 +51,135 @@
 .habit-remove {
   background: red;
   color: white;
+} */
+
+
+
+
+
+
+
+
+
+/* SAMMANHÄNGANDE CSS som todos och habits */
+
+
+.habits-div {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
+.habits-div input,
+.habits-div select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
 
+.habit-input-row {
+  background: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 15px;
+  align-items: center;
+}
 
+.habit-input {
+  flex: 1 1 260px;
+  min-width: 200px;
+}
 
+.habit-select {
+  flex: 0 0 auto;
+}
 
-/* SAMMANHÄNGANDE CSS */
+.habit-filter-row {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+}
 
+.strong-sortera {
+  margin-left: 10px;
+}
 
+.habits-div button {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
 
+.add-button-div {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
 
+.habit-button {
+  background: #4caf50;
+}
 
+.habit-button:hover {
+  background: #43a047;
+}
 
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.habit-item {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 6px solid #2196f3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.habit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.habit-reset {
+  background: #949494;
+}
+
+.habit-reset:hover {
+  background: #6d6d6d;
+}
+
+.habit-remove, .dec-button {
+  background: #e53935;
+  color: white;
+}
+
+.habit-remove:hover, .dec-button:hover {
+  background: #c62828;
+}
 
