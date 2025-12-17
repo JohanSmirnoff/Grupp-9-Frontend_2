@@ -20,6 +20,13 @@ const EventPlanner = () => {
     const userSubmit = (e) => {
         e.preventDefault()
 
+        const startDate = new Date(start)
+        const endDate = new Date(end)
+        if (endDate <= startDate) {
+            alert("Sluttiden får inte vara innan starttiden")
+            return
+        }
+
         if (selectedToEdit === null) {
             const newEvent = {
                 id: crypto.randomUUID(),
@@ -62,7 +69,12 @@ const EventPlanner = () => {
     }
 
     const removeEvent = (id) => {
-        setEvents(oldArray => oldArray.filter(event => event.id !== id))
+        const yes = confirm("Vill du verkligen ta bort detta event?")
+        if (yes) {
+            setEvents(oldArray => oldArray.filter(event => event.id !== id))
+        } else {
+            return
+        }
     }
 
     const eventStatus = (event) => {
@@ -81,7 +93,7 @@ const EventPlanner = () => {
         return event.status === eventFilter
     })
     .sort((eventA, eventB) => {
-        const eventOrder = { upcoming: 0, ongoing: 1, past: 2 }
+        const eventOrder = { ongoing: 0, upcoming: 1, past: 2 }
         if (eventOrder[eventA.status] !== eventOrder[eventB.status]) {
             return eventOrder[eventA.status] - eventOrder[eventB.status]
         }
@@ -100,7 +112,7 @@ const EventPlanner = () => {
 
                         <div className={styles["end-div"]}>
                             <label htmlFor="eventEnd">Slut-tid: </label>
-                            <input type="datetime-local" id="eventEnd" value={end} onChange={(e) => setEnd(e.target.value)} required/>
+                            <input type="datetime-local" id="eventEnd" value={end} min={start} onChange={(e) => setEnd(e.target.value)} required/>
                         </div>
 
                         <div className={styles["title-div"]}>
