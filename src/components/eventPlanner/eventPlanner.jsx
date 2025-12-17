@@ -1,33 +1,21 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./eventPlanner.css"
 
 const EventPlanner = () => {
-    const [events, setEvents] = useState ([
-        {
-            id: crypto.randomUUID(),
-            start: "1970-01-01 13:00",
-            end: "1970-01-01 13:00",
-            title: "Title 1",
-            description: "Konsert jaaow",
-            // owner: currentUser
-        },
-        {
-            id: crypto.randomUUID(),
-            start: "1970-01-01 13:00",
-            end: "1970-01-01 13:00",
-            title: "Title 2",
-            description: "Foodfight",
-            // owner: currentUser
-        }
-    ])
 
+    const [events, setEvents] = useState(() => {
+        return JSON.parse(localStorage.getItem("events")) || []
+    })
     const [start, setStart] = useState("")
     const [end, setEnd] = useState("")
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    // const [owner, setOwner] = ("")
     const [selectedToEdit, setSelectedToEdit] = useState(null)
     const [eventFilter, setEventFilter] = useState("all")
+
+    useEffect(() => {
+        localStorage.setItem("events", JSON.stringify(events))
+    }, [events])
 
     const userSubmit = (e) => {
         e.preventDefault()
@@ -39,7 +27,6 @@ const EventPlanner = () => {
                 end,
                 title,
                 description,
-                // owner
             }
             setEvents(oldArray => 
             [...oldArray, newEvent].sort((eventA, eventB) => new Date(eventA.start) - new Date(eventB.start))
@@ -52,7 +39,6 @@ const EventPlanner = () => {
 
             setSelectedToEdit(null)
         }
-
         setStart("")
         setEnd("")
         setTitle("")
