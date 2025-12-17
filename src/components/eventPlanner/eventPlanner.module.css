@@ -1,0 +1,136 @@
+/*  STORA DIVEN */
+.main-div {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+
+.main-div input, .main-div select, .main-div textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.main-div, .form-div, .form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-div {
+    background: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    gap: 15px;
+}
+
+.form-container {
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.submit-1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.start-div, .end-div, .title-div, .description-div {
+    display: flex;
+    flex: 1 1 45%;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.description-div {
+    gap: 0;
+}
+
+.start-div input, .end-div input, .title-div input, .description-div textarea {
+    flex: 1;
+    min-width: 0;
+}
+
+.button-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.main-div button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.add-button {
+    background: #4caf50;
+}
+
+.add-button:hover {
+    background: #43a047;
+}
+
+.cancel-button {
+    background: #949494;
+}
+
+.cancel-button:hover {
+    background: #6d6d6d;
+}
+
+.filter-div {
+    margin-bottom: 1rem;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.list-item {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 6px solid #2196f3;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.buttons-in-event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.edit-button {
+    background: #2196f3;
+}
+
+.edit-button:hover {
+    background: #1976d2;
+}
+
+.delete-button {
+    background: #e53935;
+}
+
+.delete-button:hover {
+    background: #c62828;
+}
+
