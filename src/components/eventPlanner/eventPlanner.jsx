@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import "./eventPlanner.css"
+import styles from "./eventPlanner.module.css"
 
 const EventPlanner = () => {
 
@@ -85,46 +85,46 @@ const EventPlanner = () => {
         if (eventOrder[eventA.status] !== eventOrder[eventB.status]) {
             return eventOrder[eventA.status] - eventOrder[eventB.status]
         }
-        return new Date(eventA.status) - new Date(eventB.status)
+        return new Date(eventA.start) - new Date(eventB.start)
     })
 
     return(
-        <div className="main-div">
-            <div className="form-div">
-                <form className="form-container" onSubmit={userSubmit}>
-                    <div className="submit-1">
-                        <div className="start-div">
+        <div className={styles["main-div"]}>
+            <div className={styles["form-div"]}>
+                <form className={styles["form-container"]} onSubmit={userSubmit}>
+                    <div className={styles["submit-1"]}>
+                        <div className={styles["start-div"]}>
                             <label htmlFor="eventStart">Start-tid: </label>
                             <input type="datetime-local" id="eventStart" value={start} onChange={(e) => setStart(e.target.value)} required/>
                         </div>
 
-                        <div className="end-div">
+                        <div className={styles["end-div"]}>
                             <label htmlFor="eventEnd">Slut-tid: </label>
                             <input type="datetime-local" id="eventEnd" value={end} onChange={(e) => setEnd(e.target.value)} required/>
                         </div>
 
-                        <div className="title-div">
+                        <div className={styles["title-div"]}>
                             <label htmlFor="eventTitle">Titel: </label> 
                             <input type="text" name="eventTitle" id="eventTitle" value={title} onChange={(e) => setTitle(e.target.value)} required/>
                         </div>
                     </div>
 
-                    <div className="submit-2">
-                        <div className="description-div">
+                    <div className={styles["submit-2"]}>
+                        <div className={styles["description-div"]}>
                             <label htmlFor="eventDesc"></label>
                             <textarea name="eventDesc" id="eventDesc" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Beskriv kortfattat eventet" rows={7} cols={40} required></textarea>
                         </div>
 
-                        <div className="button-div">
-                            <button type="submit" className="add-button">{selectedToEdit === null ? "Lägg till event" : "Spara ändringar"}</button>
-                            {selectedToEdit !== null && (<button type="button" className="cancel-button" onClick={cancelEdit}>Avbryt redigering</button>)}
+                        <div className={styles["button-div"]}>
+                            <button type="submit" className={styles["add-button"]}>{selectedToEdit === null ? "Lägg till event" : "Spara ändringar"}</button>
+                            {selectedToEdit !== null && (<button type="button" className={styles["cancel-button"]} onClick={cancelEdit}>Avbryt redigering</button>)}
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div className="event-div">
-                <div className="filter-div">
+            <div className={styles["event-div"]}>
+                <div className={styles["filter-div"]}>
                     <label htmlFor="sort">Filtrera event nedan till: </label>
                     <select name="sort" id="sort" value={eventFilter} onChange={(e) => setEventFilter(e.target.value)}>
                         <option value="all">Alla event</option>
@@ -134,18 +134,18 @@ const EventPlanner = () => {
                     </select>
                 </div>
 
-                <ul className="event-list">
+                <ul className={styles["event-list"]}>
                     {sortEvent.map(event => {
                         return(
-                            <li key={event.id} className="list-item">
+                            <li key={event.id} className={styles["list-item"]}>
                                 <div>
                                     <h3>{event.title}</h3>
                                     <span>Event starting: {new Date(event.start).toLocaleString()}<br />Event ending: {new Date(event.end).toLocaleString()}</span>
                                     <p>{event.description}</p>
                                 </div>
-                                <div className="buttons-in-event">
-                                    <button type="button" className="edit-button" onClick={() => updateEvent(event)}>Redigera</button>
-                                    <button type="button" className="delete-button" onClick={() => removeEvent(event.id)}>Ta bort</button>
+                                <div className={styles["buttons-in-event"]}>
+                                    <button type="button" className={styles["edit-button"]} onClick={() => updateEvent(event)}>Redigera</button>
+                                    <button type="button" className={styles["delete-button"]} onClick={() => removeEvent(event.id)}>Ta bort</button>
                                 </div>
                             </li>
                             )
