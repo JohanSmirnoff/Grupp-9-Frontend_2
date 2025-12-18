@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import HabitsPage from './pages/HabitsPage.jsx';
 import TodoPage from "./pages/TodoPage";
-import EventPage from "./pages/EventsPage";
-import Navbar from "./components/Navbar/Navbar.jsx"; 
+import EventPage from "./pages/EventsPage"
+import Navbar from "./components/NavBar/Navbar.jsx";
+import Footer from './components/Footer/footer.jsx';
 import SkapaKonto from './pages/skapaKonto/SkapaKonto.jsx';
 import { IdentityPageProvider } from "./context/IdentityPage";
 
@@ -12,9 +13,7 @@ function App() {
   return (
     <IdentityPageProvider>
       <Router>
-        <nav className="nav-div" style={{ display: "flex", gap: "10px", padding: "10px" }}>
-          <Navbar />
-        </nav>
+        <Navbar/>
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,6 +22,8 @@ function App() {
           <Route path="/todo" element={<TodoPage />} />
           <Route path="/events" element={<EventPage />} />
         </Routes>
+
+        <Footer />
       </Router>
     </IdentityPageProvider>
   );

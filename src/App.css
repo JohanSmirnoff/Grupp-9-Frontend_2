@@ -2,30 +2,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 90vh;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-.header-div {
-  font-family: "Honk", sans-serif, Helvetica, Arial;
-}
-
-.nav-div {
-  justify-content: center;
-}
-
-.test-div {
-  display: flex;
-  justify-content: space-around;
-  border: 1px solid black;
-  border-radius: 2rem;
-  padding: 2rem;
-}
-
-.form-div, .event-div {
-  display: flex;
-  flex-direction: column;
+.home-h1, .home-h3 {
+  font-family: "Honk", sans-serif;
 }
