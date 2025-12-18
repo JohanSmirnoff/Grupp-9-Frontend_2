@@ -1,13 +1,13 @@
-import { useNavigate } from 'react-router-dom'
+
+import Login from '../components/login/Login';
 
 const Home = () => {
- const navigate = useNavigate()
   return (
     <div>
-        <h1 className="home-h1">Välkommen till din Productivity Assistant App!</h1>
-        <h3 className="home-h3">Logga in för att använda appen...</h3>
+      <h1>Home Page</h1>
+      <Login />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
