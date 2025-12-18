@@ -6,7 +6,6 @@ import TodoPage from "./pages/TodoPage";
 import EventPage from "./pages/EventsPage"
 import Navbar from "./components/NavBar/Navbar.jsx";
 import Footer from './components/Footer/footer.jsx';
-import EventPage from "./pages/EventsPage"; 
 import SkapaKonto from './pages/skapaKonto/SkapaKonto.jsx';
 import { IdentityPageProvider } from "./context/IdentityPage";
 
