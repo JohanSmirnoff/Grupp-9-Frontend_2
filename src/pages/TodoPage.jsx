@@ -3,10 +3,11 @@ import "./TodoPage.css";
 import { v4 as idGenerator } from "uuid";
 const TodoPage = () => {
   const [tasks, setTasks] = useState(JSON.parse( localStorage.getItem("todos")) || []);
-
+  
 useEffect(() => {
   localStorage.setItem("todos", JSON.stringify(tasks));
 }, [tasks]);
+
 
 
   const [error, setErrore] = useState(null);

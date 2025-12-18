@@ -1,7 +1,8 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import HabitsPage from './pages/HabitsPage.jsx';
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from './pages/Home.jsx';
+import TopThree from "./components/TopThree/TopThree.jsx";
+import HabitsPage from './pages/HabitsPage.jsx'
 import TodoPage from "./pages/TodoPage";
 import EventPage from "./pages/EventsPage"
 import Navbar from "./components/NavBar/Navbar.jsx";

@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./HabitsPage.css"
 
 export default function HabitsPage() {
-  const [habits, setHabits] = useState([]);
-
+  const [habits, setHabits] = useState(JSON.parse( localStorage.getItem("habits"))   || []); 
+  
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(habits));
+  }, [habits]);
+  
   const [newHabit, setNewHabit] = useState("");
   const [priority, setPriority] = useState("låg");
 
@@ -51,6 +55,14 @@ export default function HabitsPage() {
     setHabits(
       habits.map(h =>
         h.id === id ? { ...h, count: 0 } : h
+      )
+    );
+  }
+
+  function completeHabit(id) {
+    setHabits(
+      habits.map(h =>
+        h.id === id ? { ...h, completed: !h.completed } : h
       )
     );
   }
@@ -172,6 +184,17 @@ export default function HabitsPage() {
                 className="habit-button habit-remove"
               >
                 Ta bort
+              </button>
+
+              <button
+                onClick={() => completeHabit(habit.id)}
+                style={{
+                  marginLeft: "5px",
+                  background: habit.completed ? "green" : "#4caf50",
+                  color: "white"
+                }}
+              >
+                {habit.completed ? "Ångra" : "Complete"}
               </button>
             </div>
           </li>
