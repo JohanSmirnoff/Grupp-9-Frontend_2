@@ -195,7 +195,7 @@ export default function HabitsPage() {
                   color: "white"
                 }}
               >
-                {habit.completed ? "Ångra" : "Complete"}
+                {habit.completed ? "Ångra" : "Klar"}
               </button>
             </div>
           </li>

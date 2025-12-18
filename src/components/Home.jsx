@@ -5,10 +5,8 @@ const Home = () => {
   const navigate = useNavigate()
   const [todos, setTodos] = useState([])
 
-  // 🔽 TILLÄGG: state för rutiner
   const [topHabits, setTopHabits] = useState([])
 
-  // 🔽 TILLÄGG: state för händelser
   const [upcomingEvents, setUpcomingEvents] = useState([])
 
   useEffect(() => {
@@ -22,7 +20,6 @@ const Home = () => {
     setTodos(latestUnfinished)
   }, [])
 
-  // 🔽 TILLÄGG: hämta och sortera rutiner
   useEffect(() => {
     const habits = JSON.parse(localStorage.getItem("habits")) || []
 
@@ -33,7 +30,6 @@ const Home = () => {
     setTopHabits(topThreeHabits)
   }, [])
 
-  // 🔽 TILLÄGG: hämta och sortera nästkommande händelser
   useEffect(() => {
     const events = JSON.parse(localStorage.getItem("events")) || []
 
