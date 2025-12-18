@@ -27,10 +27,11 @@ const Login = () => {
       login(foundAccount);
 
       try {
-        const res = await fetch("http://103.177.249.170:5000/quote");
+        const res = await fetch("https://dummyjson.com/quotes/random");
         const data = await res.json();
-        setshowText(data.text);
-      } catch (error) {
+        setshowText(data.quote);
+        console.log(data.quote)
+      } catch (err) {
        setshowText("Kunde inte hämta citat just nu.");
       }
     } else {
@@ -66,7 +67,7 @@ const Login = () => {
       {user && (
         <>
           <h3>Välkommen {user.email}</h3>
-          <p><i>{showText}</i></p>
+          <p className="random-text"><i>{showText}</i></p>
         </>
       )}
     </div>
