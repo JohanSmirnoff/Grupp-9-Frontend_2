@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-const Home = () => {
+const TopThree = () => {
   const navigate = useNavigate()
   const [todos, setTodos] = useState([])
 
@@ -100,4 +100,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default TopThree

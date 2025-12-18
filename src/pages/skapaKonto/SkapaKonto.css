@@ -1,0 +1,68 @@
+/* Hela sidan */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+/* Registreringsruta */
+.konto-container {
+  width: 350px;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: #111;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+/* Rubrik */
+.konto-container h1 {
+  margin-bottom: 20px;
+}
+
+/* Input-container */
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs */
+.input-box input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Knapp */
+.input-box button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.input-box button:hover {
+  background-color: #ccc;
+}
+
+/* Error-text */
+.Error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Välkomsttext */
+.konto-container h3 {
+  margin-top: 15px;
+  color: #4caf50;
+}

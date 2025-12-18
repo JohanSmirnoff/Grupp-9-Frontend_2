@@ -1,35 +1,33 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Home from "./components/Home.jsx";
+import Home from './pages/Home.jsx';
+import TopThree from "./components/TopThree/TopThree.jsx";
 import HabitsPage from './pages/HabitsPage.jsx'
 import TodoPage from "./pages/TodoPage";
 import EventPage from "./pages/EventsPage"
 import Navbar from "./components/NavBar/Navbar.jsx";
+import Footer from './components/Footer/footer.jsx';
+import SkapaKonto from './pages/skapaKonto/SkapaKonto.jsx';
+import { IdentityPageProvider } from "./context/IdentityPage";
 
 function App() {
   return (
-    <>
+    <IdentityPageProvider>
       <Router>
-        <nav className="nav-div" style={{ display: "flex", gap: "10px", padding: "10px" }}>
-          <Navbar/>
-        </nav>
+        <Navbar/>
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/skapa-konto" element={<SkapaKonto />} />
           <Route path="/habits" element={<HabitsPage />} />
-          <Route path="/ToDo" element={<TodoPage />} />
+          <Route path="/todo" element={<TodoPage />} />
           <Route path="/events" element={<EventPage />} />
         </Routes>
+
+        <Footer />
       </Router>
-    </>
+    </IdentityPageProvider>
+  );
+}
 
-      // <BrowserRouter>
-      //   <Routes>
-      //     <Route path="/ToDo" element={<TodoPage />} />
-      //     <Route path="/home" element= {<Home/>}/>
-      //   </Routes>
-      // </BrowserRouter>
-    );
-  };
-
-export default App 
+export default App;

@@ -41,7 +41,7 @@ useEffect(() => {
     setTask({
       title: "",
       description: "",
-      status: "",
+      status: false,
       time: "",
       category: "",
       deadline: "",
@@ -123,7 +123,7 @@ useEffect(() => {
             tasks.map((task) => (
               <div
                 key={task.id}
-                className={`taskCard ${task.status ? "taskCardDone" : ""} : `}
+                className={`taskCard ${task.status ? "taskCardDone" : ""}  `}
               >
                 <h3>{task.title}</h3>
                 <p>{task.description}</p>
