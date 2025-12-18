@@ -140,17 +140,26 @@ const EventPlanner = () => {
                     <label htmlFor="sort">Filtrera event nedan till: </label>
                     <select name="sort" id="sort" value={eventFilter} onChange={(e) => setEventFilter(e.target.value)}>
                         <option value="all">Alla event</option>
-                        <option value="upcoming">Kommande</option>
                         <option value="ongoing">Pågående</option>
+                        <option value="upcoming">Kommande</option>
                         <option value="past">Tidigare</option>
                     </select>
                 </div>
-
+                {events.length === 0 ? (
+                    <p className={styles["no-events-p"]}>
+                        Lägg till event för att se dom i listan...
+                    </p>
+                ) : (
                 <ul className={styles["event-list"]}>
                     {sortEvent.map(event => {
                         return(
-                            <li key={event.id} className={styles["list-item"]}>
+                            <li key={event.id} className={`${styles["list-item"]} ${styles[event.status]}`}>
                                 <div>
+                                    <span className={`${styles["status-badge"]} ${styles[event.status]}`}>
+                                        {event.status === "ongoing" && "Pågående"}
+                                        {event.status === "upcoming" && "Kommande"}
+                                        {event.status === "past" && "Tidigare"}
+                                    </span>
                                     <h3>{event.title}</h3>
                                     <span>Event starting: {new Date(event.start).toLocaleString()}<br />Event ending: {new Date(event.end).toLocaleString()}</span>
                                     <p>{event.description}</p>
@@ -163,6 +172,7 @@ const EventPlanner = () => {
                             )
                         })}
                 </ul>
+                )}
             </div>
         </div>
     )
