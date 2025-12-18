@@ -1,12 +1,27 @@
-import { useState, useEffect } from "react";
-import "./HabitsPage.css"
+import { useState, useEffect, useContext } from "react";
+import "./HabitsPage.css";
+import { IdentityPage } from "../context/IdentityPage";
 
 export default function HabitsPage() {
-  const [habits, setHabits] = useState(JSON.parse( localStorage.getItem("habits"))   || []); 
+  
+  const { user, loadData, saveData } = useContext(IdentityPage)
+
+  const [habits, setHabits] = useState(() => {
+    const stored = loadData("habits", []);
+    return Array.isArray(stored) ? stored : [];
+  });
   
   useEffect(() => {
-    localStorage.setItem("habits", JSON.stringify(habits));
-  }, [habits]);
+    if (!user) return;
+    const stored = loadData("habits", []);
+    setHabits(Array.isArray(stored) ? stored : []);
+  }, [user?.email]);
+
+  useEffect(() => {
+    if (!user) return;
+    saveData("habits", habits);
+  }, [habits, user?.email]);
+
   
   const [newHabit, setNewHabit] = useState("");
   const [priority, setPriority] = useState("låg");

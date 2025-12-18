@@ -13,11 +13,9 @@ const SkapaKonto = () => {
     if (!email || !password) return;
 
    const newAccount = { 
-  email, 
-  password, 
-  tasks: [], 
- 
-};
+    email, 
+    password
+  };
 
     const savedAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
 

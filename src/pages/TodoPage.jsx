@@ -1,14 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./TodoPage.css";
 import { v4 as idGenerator } from "uuid";
+import { IdentityPage } from "../context/IdentityPage";
+
 const TodoPage = () => {
-  const [tasks, setTasks] = useState(JSON.parse( localStorage.getItem("todos")) || []);
+
+  const { user, loadData, saveData } = useContext(IdentityPage)
+
+  const [tasks, setTasks] = useState(() => {
+    const storedData = loadData("todos", []);
+    return Array.isArray(storedData) ? storedData : [];
+  });
   
 useEffect(() => {
-  localStorage.setItem("todos", JSON.stringify(tasks));
-}, [tasks]);
+    if (!user) return;
+    const storedData = loadData("todos", []);
+    setTasks(Array.isArray(storedData) ? storedData : []);
+  }, [user?.email]);
 
-
+useEffect(() => {
+    if (!user) return;
+    saveData("todos", tasks);
+  }, [tasks, user?.email]);
 
   const [error, setErrore] = useState(null);
   const [task, setTask] = useState({
@@ -65,6 +78,10 @@ useEffect(() => {
   useEffect(() => {
     console.log(completeTask);
   });
+
+  if (!user) {
+    return <p>Du måste logga in för att se dina todos.</p>;
+  }
 
   return (
     <div>

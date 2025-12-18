@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { IdentityPage } from "../../context/IdentityPage"
 import styles from "./eventPlanner.module.css"
 
 const EventPlanner = () => {
 
+    const { user, loadData, saveData } = useContext(IdentityPage)
+
     const [events, setEvents] = useState(() => {
-        return JSON.parse(localStorage.getItem("events")) || []
+        const storedData = loadData("events", [])
+        return Array.isArray(storedData) ? storedData : []
     })
     const [start, setStart] = useState("")
     const [end, setEnd] = useState("")
@@ -14,8 +18,16 @@ const EventPlanner = () => {
     const [eventFilter, setEventFilter] = useState("all")
 
     useEffect(() => {
-        localStorage.setItem("events", JSON.stringify(events))
-    }, [events])
+        if (!user) return
+        const storedData = loadData("events", [])
+        setEvents(Array.isArray(storedData) ? storedData : [])
+        // setEvents(loadData("events", []))
+    }, [user?.email])
+
+    useEffect(() => {
+        if (!user) return
+        saveData("events", events)
+    }, [events, user?.email])
 
     const userSubmit = (e) => {
         e.preventDefault()
@@ -99,6 +111,10 @@ const EventPlanner = () => {
         }
         return new Date(eventA.start) - new Date(eventB.start)
     })
+
+    if (!user) {
+        return <p>Du måste logga in för att se dina event.</p>;
+    }
 
     return(
         <div className={styles["main-div"]}>
