@@ -73,7 +73,7 @@ const TopThree = () => {
       <ul>
         {topHabits.map(habit => (
           <li key={habit.id}>
-            {habit.title} – {habit.repetitions} repetitioner
+            {habit.title} – {habit.count} repetitioner
           </li>
         ))}
       </ul>
@@ -90,8 +90,6 @@ const TopThree = () => {
         {latestTodos.map(todo => (
           <li
             key={todo.id}
-            style={{ cursor: "pointer" }}
-            onClick={() => navigate("/ToDo")}
           >
             {todo.title}
           </li>
