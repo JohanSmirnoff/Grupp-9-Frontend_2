@@ -1,10 +1,11 @@
 import Login from '../components/login/Login';
+import TopThree from '../components/TopThree/TopThree';
 
 const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
-      <Login />
+      {/* <Login /> */}
+      <TopThree />
     </div>
   );
 };

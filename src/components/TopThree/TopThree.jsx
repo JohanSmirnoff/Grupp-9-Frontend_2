@@ -1,69 +1,70 @@
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { IdentityPage } from '../../context/IdentityPage'
 
 const TopThree = () => {
   const navigate = useNavigate()
-  const [todos, setTodos] = useState([])
-
   const [topHabits, setTopHabits] = useState([])
+  
+  const [latestTodos, setLatestTodos] = useState([])
 
   const [upcomingEvents, setUpcomingEvents] = useState([])
 
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem("todos")) || []
-
-    const latestUnfinished = storedTodos
-      .filter(todo => !todo.completed)
-      .sort((a, b) => b.createdAt - a.createdAt)
-      .slice(0, 3)
-
-    setTodos(latestUnfinished)
-  }, [])
+  const { user, loadData, } = useContext(IdentityPage)
 
   useEffect(() => {
-    const habits = JSON.parse(localStorage.getItem("habits")) || []
+    if (!user) return;
 
-    const topThreeHabits = habits
-      .sort((a, b) => b.repetitions - a.repetitions)
-      .slice(0, 3)
+    const habits = loadData("habits", []) || [];
+    const topThreeHabits = [...habits]
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 3);
+    setTopHabits(topThreeHabits);
 
-    setTopHabits(topThreeHabits)
-  }, [])
+    const todos = loadData("todos", []) || [];
+    const unfinishedTodos = todos.filter(todo => !todo.status);
+    const latestUnfinished = unfinishedTodos.slice(-3).reverse();
+    setLatestTodos(latestUnfinished);
 
-  useEffect(() => {
-    const events = JSON.parse(localStorage.getItem("events")) || []
+    const events = loadData("events", []) || [];
+    const now = new Date;
 
-    const nextThreeEvents = events
-      .filter(event => new Date(event.date) >= new Date())
-      .sort((a, b) => new Date(a.date) - new Date(b.date))
-      .slice(0, 3)
+    const upcoming = events
+    .filter(event => new Date(event.start) > now)
+    .sort((eventA, eventB) => new Date(eventA.start) - new Date(eventB.start))
+    .slice(0, 3);
+    setUpcomingEvents(upcoming)
 
-    setUpcomingEvents(nextThreeEvents)
-  }, [])
+
+  }, [user?.email]);
+
+  
+
+  // useEffect(() => {
+  //   const storedTodos = JSON.parse(localStorage.getItem("todos")) || []
+
+  //   const latestUnfinished = storedTodos
+  //     .filter(todo => !todo.completed)
+  //     .sort((a, b) => b.createdAt - a.createdAt)
+  //     .slice(0, 3)
+
+  //   setTodos(latestUnfinished)
+  // }, [])
+
+  // useEffect(() => {
+  //   const events = JSON.parse(localStorage.getItem("events")) || []
+
+  //   const nextThreeEvents = events
+  //     .filter(event => new Date(event.date) >= new Date())
+  //     .sort((a, b) => new Date(a.date) - new Date(b.date))
+  //     .slice(0, 3)
+
+  //   setUpcomingEvents(nextThreeEvents)
+  // }, [])
 
   return (
     <div>
       <h1>Home Page</h1>
-
-      <h2>Tre Senaste ej utförda ärenden</h2>
-
-      {todos.length === 0 && <p> Ej utförda ärenden </p>}
-
-      <ul>
-        {todos.map(todo => (
-          <li
-            key={todo.id}
-            style={{ cursor: "pointer" }}
-            onClick={() => navigate("/ToDo")}
-          >
-            {todo.title}
-          </li>
-        ))}
-      </ul>
-
-      <button onClick={() => navigate("/ToDo")}>
-        Visa alla ärenden
-      </button>
 
       <h2> Tre rutiner med högst antal repetitioner</h2>
 
@@ -79,6 +80,26 @@ const TopThree = () => {
 
       <button onClick={() => navigate("/habits")}>
         Visa alla rutiner
+      </button>
+
+      <h2>Tre Senaste ej utförda ärenden</h2>
+
+      {latestTodos.length === 0 && <p> Ej utförda ärenden </p>}
+
+      <ul>
+        {latestTodos.map(todo => (
+          <li
+            key={todo.id}
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/ToDo")}
+          >
+            {todo.title}
+          </li>
+        ))}
+      </ul>
+
+      <button onClick={() => navigate("/ToDo")}>
+        Visa alla ärenden
       </button>
 
       <h2>Tre nästkommande händelserna</h2>
@@ -100,4 +121,4 @@ const TopThree = () => {
   )
 }
 
-export default TopThree
+export default TopThree  

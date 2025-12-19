@@ -108,6 +108,10 @@ export default function HabitsPage() {
     );
   }
 
+  if (!user) {
+        return <p>Du måste logga in för att se dina habits.</p>
+    }
+
   return (
     <div className="habits-div">
       <h2>Habits</h2>
@@ -168,6 +172,14 @@ export default function HabitsPage() {
           <li
             key={habit.id}
             className="habit-item"
+            style={{
+              marginBottom: "8px",
+              padding: "10px",
+              background: habit.completed ? "#d4edda" : "#f1f1f1", 
+              borderRadius: "5px",
+              textDecoration: habit.completed ? "line-through" : "none",
+              opacity: habit.completed ? 0.7 : 1
+            }}
           >
             <strong>{habit.title}</strong>
             <div>Repetitioner: {habit.count}</div>

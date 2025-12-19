@@ -8,6 +8,7 @@ import EventPage from "./pages/EventsPage"
 import Navbar from "./components/NavBar/Navbar.jsx";
 import Footer from './components/Footer/footer.jsx';
 import SkapaKonto from './pages/skapaKonto/SkapaKonto.jsx';
+import Login from './components/login/Login.jsx';
 import { IdentityPageProvider } from "./context/IdentityPage";
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+
           <Route path="/skapa-konto" element={<SkapaKonto />} />
           <Route path="/habits" element={<HabitsPage />} />
           <Route path="/todo" element={<TodoPage />} />

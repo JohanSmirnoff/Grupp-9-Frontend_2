@@ -21,7 +21,6 @@ const EventPlanner = () => {
         if (!user) return
         const storedData = loadData("events", [])
         setEvents(Array.isArray(storedData) ? storedData : [])
-        // setEvents(loadData("events", []))
     }, [user?.email])
 
     useEffect(() => {
@@ -113,7 +112,7 @@ const EventPlanner = () => {
     })
 
     if (!user) {
-        return <p>Du måste logga in för att se dina event.</p>;
+        return <p>Du måste logga in för att se dina event.</p>
     }
 
     return(
