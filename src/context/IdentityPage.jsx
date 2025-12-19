@@ -40,23 +40,9 @@ export const IdentityPageProvider = ({ children }) => {
     localStorage.setItem(rightApp, JSON.stringify(data))
 
   }
-  // // Uppdatera användarens data (tasks, habits, events)
-  // const updateUserData = (field, newItem) => {
-  //   const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-  //   const updatedAccounts = accounts.map(acc => {
-  //     if (acc.email === user.email) {
-  //       return { ...acc, [field]: [...acc[field], newItem] };
-  //     }
-  //     return acc;
-  //   });
-
-  //   localStorage.setItem("accounts", JSON.stringify(updatedAccounts));
-  //   const updatedUser = { ...user, [field]: [...user[field], newItem] };
-  //   login(updatedUser); // uppdatera context
-  // };
 
   return (
-    <IdentityPage.Provider value={{ user, login, logout, loadData, saveData, /*updateUserData*/ }}>
+    <IdentityPage.Provider value={{ user, login, logout, loadData, saveData }}>
       {children}
     </IdentityPage.Provider>
   );

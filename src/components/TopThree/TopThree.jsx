@@ -38,30 +38,6 @@ const TopThree = () => {
 
   }, [user?.email]);
 
-  
-
-  // useEffect(() => {
-  //   const storedTodos = JSON.parse(localStorage.getItem("todos")) || []
-
-  //   const latestUnfinished = storedTodos
-  //     .filter(todo => !todo.completed)
-  //     .sort((a, b) => b.createdAt - a.createdAt)
-  //     .slice(0, 3)
-
-  //   setTodos(latestUnfinished)
-  // }, [])
-
-  // useEffect(() => {
-  //   const events = JSON.parse(localStorage.getItem("events")) || []
-
-  //   const nextThreeEvents = events
-  //     .filter(event => new Date(event.date) >= new Date())
-  //     .sort((a, b) => new Date(a.date) - new Date(b.date))
-  //     .slice(0, 3)
-
-  //   setUpcomingEvents(nextThreeEvents)
-  // }, [])
-
   return (
     <div>
       <h1>Home Page</h1>

@@ -4,7 +4,6 @@ import TopThree from '../components/TopThree/TopThree';
 const Home = () => {
   return (
     <div>
-      {/* <Login /> */}
       <TopThree />
     </div>
   );
