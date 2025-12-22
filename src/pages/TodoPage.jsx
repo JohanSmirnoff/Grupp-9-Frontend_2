@@ -4,65 +4,137 @@ import { v4 as idGenerator } from "uuid";
 import { IdentityPage } from "../context/IdentityPage";
 
 const TodoPage = () => {
+  const { user, loadData, saveData } = useContext(IdentityPage);
 
-  const { user, loadData, saveData } = useContext(IdentityPage)
+  const [tasks, setTasks] = useState([]);
+  const [editingId, setEditingId] = useState(null);
 
-  const [tasks, setTasks] = useState(() => {
-    const storedData = loadData("todos", []);
-    return Array.isArray(storedData) ? storedData : [];
-  });
-  
-useEffect(() => {
-    if (!user) return;
-    const storedData = loadData("todos", []);
-    setTasks(Array.isArray(storedData) ? storedData : []);
-  }, [user?.email]);
-
-useEffect(() => {
-    if (!user) return;
-    saveData("todos", tasks);
-  }, [tasks, user?.email]);
-
-  const [error, setError] = useState(null);
   const [task, setTask] = useState({
     title: "",
     description: "",
-    status: false,
     time: "",
     category: "",
     deadline: "",
+    status: false,
   });
+
+  const [error, setError] = useState("");
 
   const [filterStatus, setFilterStatus] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
   const [sortBy, setSortBy] = useState("deadline-asc");
 
+  // Load tasks
+  useEffect(() => {
+    if (!user) return;
+    const stored = loadData("todos", []);
+    setTasks(Array.isArray(stored) ? stored : []);
+  }, [user?.email]);
+
+  // Save tasks
+  useEffect(() => {
+    if (!user) return;
+    saveData("todos", tasks);
+  }, [tasks, user?.email]);
+
+  // ---------------------------
+  // ADD TASK
+  // ---------------------------
   const AddTask = () => {
     if (!task.title || !task.description || !task.time || !task.category || !task.deadline) {
       setError("Something is missing!");
       return;
     }
-    const newTask = { ...task, id: idGenerator(), status: false,createdAt: Date.now() 
 
- };
+    const newTask = {
+      ...task,
+      id: idGenerator(),
+      createdAt: Date.now(),
+      status: false,
+    };
+
     setTasks([...tasks, newTask]);
-    setTask({ title: "", description: "", status: false, time: "", category: "", deadline: "" });
-    setError("");
+    resetForm();
   };
 
+  // ---------------------------
+  // START EDIT
+  // ---------------------------
+  const startEdit = (t) => {
+    setEditingId(t.id);
+    setTask({
+      title: t.title,
+      description: t.description,
+      time: t.time,
+      category: t.category,
+      deadline: t.deadline,
+      status: t.status,
+    });
+  };
+
+  // ---------------------------
+  // SAVE EDIT
+  // ---------------------------
+  const saveEdit = () => {
+    if (!task.title || !task.description || !task.time || !task.category || !task.deadline) {
+      setError("Something is missing!");
+      return;
+    }
+
+    setTasks(
+      tasks.map((t) =>
+        t.id === editingId ? { ...t, ...task } : t
+      )
+    );
+
+    resetForm();
+    setEditingId(null);
+  };
+
+  // ---------------------------
+  // CANCEL EDIT
+  // ---------------------------
+  const cancelEdit = () => {
+    resetForm();
+    setEditingId(null);
+  };
+
+  // ---------------------------
+  // DELETE TASK
+  // ---------------------------
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks(tasks.filter((t) => t.id !== id));
   };
 
+  // ---------------------------
+  // COMPLETE TASK
+  // ---------------------------
   const completeTask = (id) => {
     setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, status: !task.status } : task
+      tasks.map((t) =>
+        t.id === id ? { ...t, status: !t.status } : t
       )
     );
   };
 
+  // ---------------------------
+  // RESET FORM
+  // ---------------------------
+  const resetForm = () => {
+    setTask({
+      title: "",
+      description: "",
+      time: "",
+      category: "",
+      deadline: "",
+      status: false,
+    });
+    setError("");
+  };
 
+  // ---------------------------
+  // FILTERING
+  // ---------------------------
   let filteredTasks = tasks.filter((t) => {
     if (filterStatus === "done" && !t.status) return false;
     if (filterStatus === "pending" && t.status) return false;
@@ -70,7 +142,9 @@ useEffect(() => {
     return true;
   });
 
-  // 🔹 Sortering
+  // ---------------------------
+  // SORTING
+  // ---------------------------
   if (sortBy === "deadline-asc") {
     filteredTasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
   } else if (sortBy === "deadline-desc") {
@@ -83,61 +157,66 @@ useEffect(() => {
     filteredTasks.sort((a, b) => a.status - b.status);
   }
 
-  useEffect(() => {
-    console.log(completeTask);
-  });
-
-  if (!user) {
-    return <p>Du måste logga in för att se dina todos.</p>;
-  }
+  if (!user) return <p>You must log in to see your tasks.</p>;
 
   return (
     <div className="todoContainer">
       <h1>Todos & Activities</h1>
 
-      
+      {/* FORM */}
       <div className="addTask">
         <form>
           <input
             type="text"
-            value={task.title}
             placeholder="Title"
+            value={task.title}
             onChange={(e) => setTask({ ...task, title: e.target.value })}
           />
+
           <input
             type="text"
-            value={task.description}
             placeholder="Description"
+            value={task.description}
             onChange={(e) => setTask({ ...task, description: e.target.value })}
           />
+
           <input
             type="number"
-            value={task.time}
             placeholder="Days"
+            value={task.time}
             onChange={(e) => setTask({ ...task, time: Number(e.target.value) })}
           />
+
           <select
-            onChange={(e) => setTask({ ...task, category: e.target.value })}
             value={task.category}
+            onChange={(e) => setTask({ ...task, category: e.target.value })}
           >
-            <option value="" disabled hidden>
-              Choose category...
-            </option>
+            <option value="" disabled hidden>Choose category...</option>
             <option value="health">Health</option>
             <option value="household">Household</option>
             <option value="job">Job</option>
           </select>
+
           <input
             type="date"
-            onChange={(e) => setTask({ ...task, deadline: e.target.value })}
             value={task.deadline}
+            onChange={(e) => setTask({ ...task, deadline: e.target.value })}
           />
         </form>
-        <button onClick={AddTask}>Add Task</button>
+
+        {editingId ? (
+          <>
+            <button onClick={saveEdit}>Save Changes</button>
+            <button onClick={cancelEdit}>Cancel</button>
+          </>
+        ) : (
+          <button onClick={AddTask}>Add Task</button>
+        )}
+
         {error && <p className="error">{error}</p>}
       </div>
 
-     
+      {/* FILTERS */}
       <div className="filters">
         <select onChange={(e) => setFilterStatus(e.target.value)}>
           <option value="all">All</option>
@@ -161,24 +240,23 @@ useEffect(() => {
         </select>
       </div>
 
-    
+      {/* TASK LIST */}
       <div className="tasksContainer">
         {filteredTasks.length === 0 && <h2>No tasks found</h2>}
-        {filteredTasks.map((task) => (
-          <div
-            key={task.id}
-            className={`taskCard ${task.status ? "taskCardDone" : ""}`}
-          >
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <p>{`It takes ${task.time} days`}</p>
-            <p>{`Category: ${task.category}`}</p>
-            <p>{`Deadline: ${task.deadline}`}</p>
 
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
-            <button onClick={() => completeTask(task.id)}>
-              {task.status ? "Undo" : "Complete"}
+        {filteredTasks.map((t) => (
+          <div key={t.id} className={`taskCard ${t.status ? "taskCardDone" : ""}`}>
+            <h3>{t.title}</h3>
+            <p>{t.description}</p>
+            <p>{`It takes ${t.time} days`}</p>
+            <p>{`Category: ${t.category}`}</p>
+            <p>{`Deadline: ${t.deadline}`}</p>
+
+            <button onClick={() => deleteTask(t.id)}>Delete</button>
+            <button onClick={() => completeTask(t.id)}>
+              {t.status ? "Undo" : "Complete"}
             </button>
+            <button onClick={() => startEdit(t)}>Edit</button>
           </div>
         ))}
       </div>
