@@ -86,7 +86,7 @@ const TopThree = () => {
           <ul className="topthree-ul">
             {upcomingEvents.map(event => (
               <li key={event.id}>
-                {event.title} – {event.date}
+                {`${event.title} – Start: ${new Date(event.start).toLocaleString()}`}
               </li>
             ))}
           </ul>

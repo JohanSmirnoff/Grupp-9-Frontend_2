@@ -6,7 +6,11 @@ import { IdentityPage } from "../context/IdentityPage";
 const TodoPage = () => {
   const { user, loadData, saveData } = useContext(IdentityPage);
 
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+        const storedData = loadData("todos", [])
+        return Array.isArray(storedData) ? storedData : []
+    })
+
   const [editingId, setEditingId] = useState(null);
 
   const [task, setTask] = useState({
