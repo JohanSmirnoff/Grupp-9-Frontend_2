@@ -247,10 +247,47 @@
   background: #1976d2;
 }
 
-/* ====== Responsive ====== */
+
 @media (max-width: 600px) {
   .addTask input,
   .addTask select {
+    flex: 1 1 100%;
+  }
+}
+
+
+.filters {
+  background: #f7f7f7;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  flex: 1 1 30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filters select:hover {
+  border-color: #2196f3;
+  box-shadow: 0 0 4px rgba(33,150,243,0.4);
+}
+
+
+@media (max-width: 600px) {
+  .filters select {
     flex: 1 1 100%;
   }
 }

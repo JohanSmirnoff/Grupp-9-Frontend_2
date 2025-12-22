@@ -42,7 +42,9 @@ useEffect(() => {
       setError("Something is missing!");
       return;
     }
-    const newTask = { ...task, id: idGenerator(), status: false };
+    const newTask = { ...task, id: idGenerator(), status: false,createdAt: Date.now() 
+
+ };
     setTasks([...tasks, newTask]);
     setTask({ title: "", description: "", status: false, time: "", category: "", deadline: "" });
     setError("");
