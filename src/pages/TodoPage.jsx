@@ -157,7 +157,7 @@ const TodoPage = () => {
     filteredTasks.sort((a, b) => a.status - b.status);
   }
 
-  if (!user) return <p>You must log in to see your tasks.</p>;
+  if (!user) return <p>Du måste logga in för att se dina todos.</p>;
 
   return (
     <div className="todoContainer">
@@ -168,21 +168,21 @@ const TodoPage = () => {
         <form>
           <input
             type="text"
-            placeholder="Title"
+            placeholder="Titel"
             value={task.title}
             onChange={(e) => setTask({ ...task, title: e.target.value })}
           />
 
           <input
             type="text"
-            placeholder="Description"
+            placeholder="Beskrivning"
             value={task.description}
             onChange={(e) => setTask({ ...task, description: e.target.value })}
           />
 
           <input
             type="number"
-            placeholder="Days"
+            placeholder="Tid i dagar"
             value={task.time}
             onChange={(e) => setTask({ ...task, time: Number(e.target.value) })}
           />
@@ -191,10 +191,10 @@ const TodoPage = () => {
             value={task.category}
             onChange={(e) => setTask({ ...task, category: e.target.value })}
           >
-            <option value="" disabled hidden>Choose category...</option>
-            <option value="health">Health</option>
-            <option value="household">Household</option>
-            <option value="job">Job</option>
+            <option value="" disabled hidden>Välj kategori...</option>
+            <option value="health">Hälsa</option>
+            <option value="household">Hushåll</option>
+            <option value="job">Jobb</option>
           </select>
 
           <input
@@ -206,11 +206,11 @@ const TodoPage = () => {
 
         {editingId ? (
           <>
-            <button onClick={saveEdit}>Save Changes</button>
-            <button onClick={cancelEdit}>Cancel</button>
+            <button onClick={saveEdit}>Spara ändringar</button>
+            <button onClick={cancelEdit}>Avbryt</button>
           </>
         ) : (
-          <button onClick={AddTask}>Add Task</button>
+          <button onClick={AddTask}>Lägg till</button>
         )}
 
         {error && <p className="error">{error}</p>}
@@ -219,30 +219,30 @@ const TodoPage = () => {
       {/* FILTERS */}
       <div className="filters">
         <select onChange={(e) => setFilterStatus(e.target.value)}>
-          <option value="all">All</option>
-          <option value="done">Completed</option>
-          <option value="pending">Not completed</option>
+          <option value="all">Alla</option>
+          <option value="done">Avslutad</option>
+          <option value="pending">Ej avslutad</option>
         </select>
 
         <select onChange={(e) => setFilterCategory(e.target.value)}>
-          <option value="all">All categories</option>
-          <option value="health">Health</option>
-          <option value="household">Household</option>
-          <option value="job">Job</option>
+          <option value="all">Alla kategorier</option>
+          <option value="health">Hälsa</option>
+          <option value="household">Hushåll</option>
+          <option value="job">Jobb</option>
         </select>
 
         <select onChange={(e) => setSortBy(e.target.value)}>
           <option value="deadline-asc">Deadline ↑</option>
           <option value="deadline-desc">Deadline ↓</option>
-          <option value="time-asc">Time ↑</option>
-          <option value="time-desc">Time ↓</option>
+          <option value="time-asc">Tid ↑</option>
+          <option value="time-desc">Tid ↓</option>
           <option value="status">Status</option>
         </select>
       </div>
 
       {/* TASK LIST */}
       <div className="tasksContainer">
-        {filteredTasks.length === 0 && <h2>No tasks found</h2>}
+        {filteredTasks.length === 0 && <h2>Inga todos hittade</h2>}
 
         {filteredTasks.map((t) => (
           <div key={t.id} className={`taskCard ${t.status ? "taskCardDone" : ""}`}>
@@ -252,11 +252,11 @@ const TodoPage = () => {
             <p>{`Category: ${t.category}`}</p>
             <p>{`Deadline: ${t.deadline}`}</p>
 
-            <button onClick={() => deleteTask(t.id)}>Delete</button>
+            <button onClick={() => deleteTask(t.id)}>Ta bort</button>
             <button onClick={() => completeTask(t.id)}>
-              {t.status ? "Undo" : "Complete"}
+              {t.status ? "Ångra" : "Avsluta"}
             </button>
-            <button onClick={() => startEdit(t)}>Edit</button>
+            <button onClick={() => startEdit(t)}>Redigera</button>
           </div>
         ))}
       </div>
