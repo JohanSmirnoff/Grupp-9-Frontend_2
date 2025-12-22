@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { IdentityPage } from '../../context/IdentityPage'
+import "./TopThree.css"
 
 const TopThree = () => {
   const navigate = useNavigate()
@@ -39,58 +40,62 @@ const TopThree = () => {
   }, [user?.email]);
 
   return (
-    <div>
+    <div className="topthree-div">
       <h1>Home Page</h1>
 
-      <h2> Tre rutiner med högst antal repetitioner</h2>
+      {!user ? <p className="no-user-p">Logga in för att se innehållet i din app</p> : (
+        <>
+          <h2> Tre rutiner med högst antal repetitioner</h2>
 
-      {topHabits.length === 0 && <p>Inga rutiner hittades</p>}
+          {topHabits.length === 0 && <p>Inga rutiner hittades</p>}
 
-      <ul>
-        {topHabits.map(habit => (
-          <li key={habit.id}>
-            {habit.title} – {habit.count} repetitioner
-          </li>
-        ))}
-      </ul>
+          <ul className="topthree-ul">
+            {topHabits.map(habit => (
+              <li key={habit.id}>
+                {habit.title} – {habit.count} repetitioner
+              </li>
+            ))}
+          </ul>
 
-      <button onClick={() => navigate("/habits")}>
-        Visa alla rutiner
-      </button>
+          <button onClick={() => navigate("/habits")}>
+            Visa alla rutiner
+          </button>
 
-      <h2>Tre Senaste ej utförda ärenden</h2>
+          <h2>Tre Senaste ej utförda ärenden</h2>
 
-      {latestTodos.length === 0 && <p> Ej utförda ärenden </p>}
+          {latestTodos.length === 0 && <p> Ej utförda ärenden </p>}
 
-      <ul>
-        {latestTodos.map(todo => (
-          <li
-            key={todo.id}
-          >
-            {todo.title}
-          </li>
-        ))}
-      </ul>
+          <ul className="topthree-ul">
+            {latestTodos.map(todo => (
+              <li
+                key={todo.id}
+              >
+                {todo.title}
+              </li>
+            ))}
+          </ul>
 
-      <button onClick={() => navigate("/ToDo")}>
-        Visa alla ärenden
-      </button>
+          <button onClick={() => navigate("/ToDo")}>
+            Visa alla ärenden
+          </button>
 
-      <h2>Tre nästkommande händelserna</h2>
+          <h2>Tre nästkommande händelserna</h2>
 
-      {upcomingEvents.length === 0 && <p>Inga kommande händelser</p>}
+          {upcomingEvents.length === 0 && <p>Inga kommande händelser</p>}
 
-      <ul>
-        {upcomingEvents.map(event => (
-          <li key={event.id}>
-            {event.title} – {event.date}
-          </li>
-        ))}
-      </ul>
+          <ul className="topthree-ul">
+            {upcomingEvents.map(event => (
+              <li key={event.id}>
+                {event.title} – {event.date}
+              </li>
+            ))}
+          </ul>
 
-      <button onClick={() => navigate("/events")}>
-        Visa alla händelser
-      </button>
+          <button onClick={() => navigate("/events")}>
+            Visa alla händelser
+          </button>
+        </>
+      )}
     </div>
   )
 }

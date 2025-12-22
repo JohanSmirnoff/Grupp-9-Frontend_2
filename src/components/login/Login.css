@@ -12,8 +12,9 @@ body {
   margin: 100px auto;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4 15px rgba(255, 255, 255, 0.1);
   text-align: center;
+  background: #f7f7f7;
 }
 
 /* Rubrik */
@@ -32,7 +33,7 @@ body {
 .input-box input {
   padding: 10px;
   border-radius: 5px;
-  border: none;
+  border: 1px;
   outline: none;
   font-size: 16px;
 }
